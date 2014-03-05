@@ -1,7 +1,9 @@
 #!/bin/sh
-source pogoda.conf
+. $PWD/pogoda.conf
+echo $DELAY
 while (true)
 do
-	wget -t 1 http://www.gismeteo.by/weather-minsk-4248/
+	if [ -f $PAGEFILE ]; then rm $PAGEFILE; fi
+	wget -t 1 -O $PAGEFILE http://www.gismeteo.by/weather-minsk-4248/
 	
 done
